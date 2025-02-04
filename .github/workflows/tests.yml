@@ -9,13 +9,9 @@ on:
 jobs:
   build:
     runs-on: ubuntu-24.04
-    strategy:
-      matrix:
-        python: [python2, python3]
-
     steps:
     - uses: actions/checkout@v4
     - name: Print Python version
-      run: ${{matrix.python}} --version
+      run: python3 --version
     - name: Test
-      run: ${{matrix.python}} -m unittest discover -v logging_tree
+      run: python3 -m unittest discover -v logging_tree
