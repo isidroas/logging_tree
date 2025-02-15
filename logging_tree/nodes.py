@@ -17,9 +17,6 @@ def tree():
     for name, logger in items:
         nodes[name] = node = (name, logger, [])
         i = name.rfind('.', 0, len(name) - 1)  # same formula used in `logging`
-        if i == -1:
-            parent = nodes['']
-        else:
-            parent = nodes[name[:i]]
+        parent=nodes['' if i == -1 else name[:i]]
         parent[2].append(node)
     return root
