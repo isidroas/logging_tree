@@ -11,7 +11,7 @@ def tree():
 
     """
     root = ('', logging.root, [])
-    nodes = {}
+    nodes = {'': root}
     items = list(logging.root.manager.loggerDict.items())  # for Python 2 and 3
     items.sort()
     for name, logger in items:
