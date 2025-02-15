@@ -18,7 +18,7 @@ def tree():
         nodes[name] = node = (name, logger, [])
         i = name.rfind('.', 0, len(name) - 1)  # same formula used in `logging`
         if i == -1:
-            parent = root
+            parent = nodes['']
         else:
             parent = nodes[name[:i]]
         parent[2].append(node)
