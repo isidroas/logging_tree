@@ -44,6 +44,11 @@ class NodeTests(LoggingTestCase):
                             ]),
                     ]))
 
+def load_tests(loader, suite, ignore):
+    import doctest
+    import logging_tree.nodes
+    suite.addTests(doctest.DocTestSuite(logging_tree.nodes))
+    return suite
 
 if __name__ == '__main__':  # for Python <= 2.4
     unittest.main()

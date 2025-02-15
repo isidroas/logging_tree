@@ -2,6 +2,23 @@
 
 import logging
 
+
+def _get_parent_name(name):
+    """
+    >>> _get_parent_name('a')
+    ''
+    >>> _get_parent_name('a.b')
+    'a'
+    >>> _get_parent_name('a.b.c')
+    'a.b'
+    """
+    i = name.rfind('.', 0, len(name) - 1)  # same formula used in `logging`
+    if i == -1:
+        return ''
+    else:
+        return name[:i]
+
+
 def tree():
     """Return a tree of tuples representing the logger layout.
 
@@ -16,7 +33,6 @@ def tree():
     items.sort()
     for name, logger in items:
         nodes[name] = node = (name, logger, [])
-        i = name.rfind('.', 0, len(name) - 1)  # same formula used in `logging`
-        parent=nodes['' if i == -1 else name[:i]]
+        parent=nodes[_get_parent_name(name)]
         parent[2].append(node)
     return root
