@@ -33,6 +33,6 @@ def tree():
     items.sort()
     for name, logger in items:
         nodes[name] = node = (name, logger, [])
-        parent=nodes[_get_parent_name(name)]
-        parent[2].append(node)
+        _, _, parent_childs = nodes[_get_parent_name(name)]
+        parent_childs.append(node)
     return root
